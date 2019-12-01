@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+
+</h:head>
+<h:form id="helloForm">
+	<p:separator></p:separator>
+	<h2 style="text-align: center;">Ajout D'un Nouveau Contact</h2>
+	<p:separator></p:separator>
+	
+	<p:panel id="panelNewContact">
+		<h:panelGrid columns="2" border="0" cellpadding="0" cellspacing="0">
+			<h:outputText value="Marticule : " />
+			<h:inputText id="idMat" value="#{ctB.ct.numMatCnt}" />
+			<h:outputText value="Nom : " />
+			<h:inputText id="idNom" value="#{ctB.ct.nomNomCnt}" />
+			<h:outputText value="Prenom : " />
+			<h:inputText id="idPre" value="#{ctB.ct.nomPrnCnt}" />
+			<h:outputText value="GSM : " />
+			<h:inputText id="idGsm" value="#{ctB.ct.numGsmCnt}" />
+			<h:outputText value="@mail : " />
+			<h:inputText id="idMail" value="#{ctB.ct.adrEmailCnt}" />
+		</h:panelGrid>
+
+
+			<h:panelGrid style="display:block; text-align:center" columns="3">
+				<p:commandButton value="Quitter"
+					action="#{ctB.quitter}" immediate="true"
+					icon="ui-icon-circle-arrow-w"></p:commandButton>
+				<p:commandButton value="Annuler" type="reset"
+					action="#{ctB.annuler}"
+					update="panelNewContact" immediate="true"
+					icon="ui-icon-arrowrefresh-1-n"></p:commandButton>
+				<p:commandButton value="Save"
+					action="#{ctB.ajouter}"
+					update="panelNewContact"
+					icon="ui-icon-circle-check" />
+			</h:panelGrid>
+			
+	</p:panel>
+
+</h:form>
+</html>
+

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+
+	<converter>
+		<converter-id>entityConverter</converter-id>
+		<converter-class>com.converter.EntityConverter</converter-class>
+	</converter>
+
+
+	<managed-bean>
+		<managed-bean-name>loginB</managed-bean-name>
+		<managed-bean-class>com.business.LogintBusiness</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>artB</managed-bean-name>
+		<managed-bean-class>com.business.ArticleBusiness</managed-bean-class>
+
+		<managed-property>
+			<property-name>artIDao</property-name>
+			<property-class>com.dao.ArticleIDao</property-class>
+			<value>#{artDao123}</value>
+		</managed-property>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+
+	<managed-bean>
+		<managed-bean-name>cmdB</managed-bean-name>
+		<managed-bean-class>com.business.CmdBusiness</managed-bean-class>
+
+		<managed-property>
+			<property-name>cmdIDao</property-name>
+			<property-class>com.dao.CmdIDao</property-class>
+			<value>#{cmdDao}</value>
+		</managed-property>
+
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+
+	<managed-bean>
+		<managed-bean-name>ctB</managed-bean-name>
+		<managed-bean-class>com.business.ContactBusiness</managed-bean-class>
+
+		<managed-property>
+			<property-name>ctDao</property-name>
+			<property-class>com.dao.ContactIDao</property-class>
+			<value>#{ctDao1}</value>
+		</managed-property>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>prdB</managed-bean-name>
+		<managed-bean-class>com.business.ProduitBusiness</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>ajoutCmd</from-outcome>
+			<to-view-id>/gestionCmd/ajouterCmd.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>consultCmd</from-outcome>
+			<to-view-id>/gestionCmd/consulterCmd.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>modifCmd</from-outcome>
+			<to-view-id>/gestionCmd/modifierCmd.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>suppCmd</from-outcome>
+			<to-view-id>/gestionCmd/supprimerCmd.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>gestArt</from-outcome>
+			<to-view-id>/gestionArticle/gestionArticle.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>quitter</from-outcome>
+			<to-view-id>/facelets/menuSI.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/facelets/menuSI.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>error</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver
+		</el-resolver>
+	</application>
+</faces-config>

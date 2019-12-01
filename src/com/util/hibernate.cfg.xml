@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Configuration DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- local connection properties -->
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+		<property name="hibernate.connection.username">dev</property>
+		<property name="hibernate.connection.password">dev</property>
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.default_schema">DEV</property>
+		<mapping package="com.model" />
+		<mapping class="com.model.Contact" />
+		<mapping class="com.model.Article" />
+		<mapping class="com.model.Cmd" />
+		<mapping class="com.model.DetailCmd" />
+		<mapping class="com.model.DetailCmdId" />
+		<mapping class="com.model.UtilisateurId" />
+		<mapping class="com.model.Utilisateur" />
+	</session-factory>
+</hibernate-configuration>

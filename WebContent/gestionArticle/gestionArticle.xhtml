@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+
+</h:head>
+<h:form id="helloForm">
+	<p:separator></p:separator>
+	<h2 style="text-align: center;">Gestion Article</h2>
+	<p:separator></p:separator>
+
+	<p:panel id="panelNewArticle">
+		<h:panelGrid columns="2" border="0" cellpadding="0" cellspacing="0">
+			<h:outputText value="Code Article : " />
+			<h:inputText id="idCod" value="#{artB.art.codArtArt}" />
+			<h:outputText value="Libelle Article : " />
+			<h:inputText id="idLib" value="#{artB.art.libArtArt}" />
+			<h:outputText value="Prix Unitaire : " />
+			<h:inputText id="idPfrix" value="#{artB.art.prixUnitArt}" />
+			<h:outputText value="Qté disponible : " />
+			<h:inputText id="idQté" value="#{artB.art.qteDispArt}" />
+		</h:panelGrid>
+
+		<h:panelGrid style="display:block; text-align:center" columns="3">
+			<p:commandButton value="Quitter" action="#{artB.quitter}"
+				immediate="true" icon="ui-icon-circle-arrow-w"></p:commandButton>
+			<p:commandButton value="Annuler" type="reset"
+				action="#{artB.annuler}" update="panelNewContact" immediate="true"
+				icon="ui-icon-arrowrefresh-1-n"></p:commandButton>
+			<p:commandButton value="Save" action="#{artB.addArticle}"
+				update="panelNewArticle, datatAticle" icon="ui-icon-circle-check" />
+		</h:panelGrid>
+
+	</p:panel>
+
+
+	<p:growl id="msgs" showDetail="true" />
+	<p:dataTable id="datatAticle" var="car" value="#{artB.listrArt}"
+		editable="true">
+
+		<f:facet name="header">
+           Row Editing
+       </f:facet>
+		<p:ajax event="rowEdit" listener="#{artB.onRowEdit}"
+			update=":helloForm:msgs" />
+		<p:ajax event="rowEditCancel" listener="#{artB.onRowCancel}"
+			update=":helloForm:msgs" />
+
+		<p:ajax event="cellEdit" listener="#{artB.onCellEdit}"
+			update=":helloForm:msgs" />
+
+		<p:column headerText="Code Article">
+			<h:outputText value="#{car.codArtArt}" />
+		</p:column>
+
+		<p:column headerText="Libelle Art-icle ">
+			<p:cellEditor>
+				<f:facet name="output">
+					<h:outputText value="#{car.libArtArt}" />
+				</f:facet>
+				<f:facet name="input">
+					<p:inputText value="#{car.libArtArt}" style="width:100%" />
+				</f:facet>
+			</p:cellEditor>
+		</p:column>
+
+		<p:column headerText="Peix Unit">
+			<h:outputText value="#{car.prixUnitArt}" />
+		</p:column>
+
+		<p:column headerText="Qté">
+			<h:outputText value="#{car.qteDispArt}" />
+		</p:column>
+
+		<p:column style="width:32px">
+			<p:rowEditor />
+		</p:column>
+
+		<p:column style="width:32px;text-align: center">
+			<p:commandButton update=":helloForm:carDetail"
+				oncomplete="PF('carDialog').show()" icon="ui-icon-search"
+				title="View">
+				<f:setPropertyActionListener value="#{car}"
+					target="#{artB.selectedArt}" />
+			</p:commandButton>
+		</p:column>
+
+	</p:dataTable>
+
+	<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
+		showEffect="fade" hideEffect="fade" resizable="false">
+		<p:outputPanel id="carDetail" style="text-align:center;">
+			<p:panelGrid columns="2">
+
+				<h:outputText value="ID:" />
+				<h:outputText value="#{artB.selectedArt.codArtArt}" />
+
+				<h:outputText value="Libellé" />
+				<h:outputText value="#{artB.selectedArt.libArtArt}" />
+
+			</p:panelGrid>
+
+			<p:commandButton value="Supprimer" action="#{artB.deleteArticle}"
+				update=" datatAticle" icon="ui-icon-circle-check" 
+				oncomplete="PF('carDialog').hide()"/>
+		</p:outputPanel>
+	</p:dialog>
+
+
+
+
+</h:form>
+</html>
+

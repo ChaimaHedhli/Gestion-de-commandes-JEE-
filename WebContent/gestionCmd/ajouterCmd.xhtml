@@ -1,0 +1,98 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+
+</h:head>
+<h:body>
+	<h:form id="form" prependId="false">
+		<p:separator></p:separator>
+		<h2 style="text-align: center;">Gestion Commande</h2>
+		<p:separator></p:separator>
+
+
+
+		<p:fieldset id="panelConsultCmd" legend="Gestion Des Cmd"
+			toggleable="true" toggleSpeed="500" collapsed="false">
+
+
+			<p:outputPanel id="newDetailCmdDialogPanel"
+				style="text-align:center;">
+				<h:panelGrid columns="2" cellpadding="5" id="panelPP">
+
+					<p:outputLabel for="Article" value="Article" />
+					<p:selectOneMenu id="Article" filter="true"
+						filterMatchMode="contains" converter="entityConverter"
+						height="250" effect="fade" var="p">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{cmdB.listArticle}" var="art"
+							itemLabel="#{art.libArtArt}" itemValue="#{art}" />
+						<p:column>  #{p.libArtArt}  </p:column>
+					</p:selectOneMenu>
+
+					<p:outputLabel for="qte" value="Qté" />
+					<p:inputText id="qte" label="qte" value="#{cmdB.qte}">
+					</p:inputText>
+				</h:panelGrid>
+				<p:separator></p:separator>
+				<h:panelGrid style="display:block; text-align:center" columns="3">
+
+					<p:commandButton value="Save"
+						action="#{cmdB.ajouterNouveauDetailCmd}"
+						update=":form:listeTable"
+						icon="ui-icon-check" />
+				</h:panelGrid>
+			</p:outputPanel>
+
+			<p:dataTable id="listeTable" var="varServ"
+				value="#{cmdB.listDetailCmd}" widgetVar="cellCars"
+				style="margin-bottom:20px" multiViewState="true"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15" rows="10" paginator="true">
+				<f:facet name="header">
+        			Détail CMD
+				</f:facet>
+
+				<p:column headerText="Article"
+					sortBy="#{varServ.article.libArtArt}"
+					filterBy="#{varServ.article.libArtArt}" filterMatchMode="contains">
+					<h:outputText value="#{varServ.article.libArtArt}" />
+				</p:column>
+
+				<p:column headerText="Qté" sortBy="#{varServ.qteCmdArt}"
+					filterBy="#{varServ.qteCmdArt}" filterMatchMode="contains">
+					<h:outputText value="#{varServ.qteCmdArt}" />
+				</p:column>
+
+				<p:column headerText="Suppression"
+					style="width:90px;text-align: center">
+					<p:commandButton actionListener="#{cmdB.supprimerDetailCmd}"
+						icon="ui-icon-trash" update="listeTable" title="Supprimer">
+						<f:setPropertyActionListener value="#{varServ}"
+							target="#{cmdB.selectedDetailCmd}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+
+
+
+		</p:fieldset>
+
+	</h:form>
+
+
+
+
+
+
+
+
+
+</h:body>
+</html>
+

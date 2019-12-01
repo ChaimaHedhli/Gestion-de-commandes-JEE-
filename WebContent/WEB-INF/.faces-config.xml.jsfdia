@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#facelets#menuSI.xhtml"
+  PATH="/facelets/menuSI.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ajoutCmd::#gestionCmd#ajouterCmd.xhtml"
+    NAME="output" PATH="/gestionCmd/ajouterCmd.xhtml"
+    TARGET="rules:#gestionCmd#ajouterCmd.xhtml" TITLE="ajoutCmd" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="consultCmd::#gestionCmd#consulterCmd.xhtml"
+    NAME="output1" PATH="/gestionCmd/consulterCmd.xhtml"
+    TARGET="rules:#gestionCmd#consulterCmd.xhtml" TITLE="consultCmd" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="modifCmd::#gestionCmd#modifierCmd.xhtml"
+    NAME="output2" PATH="/gestionCmd/modifierCmd.xhtml"
+    TARGET="rules:#gestionCmd#modifierCmd.xhtml" TITLE="modifCmd" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="suppCmd::#gestionCmd#supprimerCmd.xhtml"
+    NAME="output3" PATH="/gestionCmd/supprimerCmd.xhtml"
+    TARGET="rules:#gestionCmd#supprimerCmd.xhtml" TITLE="suppCmd" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="gestArt::#gestionArticle#gestionArticle.xhtml" NAME="output4"
+    PATH="/gestionArticle/gestionArticle.xhtml"
+    TARGET="rules:#gestionArticle#gestionArticle.xhtml" TITLE="gestArt" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="quitter::#facelets#menuSI.xhtml"
+    NAME="output5" PATH="/facelets/menuSI.xhtml"
+    TARGET="rules:#facelets#menuSI.xhtml" TITLE="quitter" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="32,257,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#facelets#menuSI.xhtml"
+    NAME="output" PATH="/facelets/menuSI.xhtml"
+    TARGET="rules:#facelets#menuSI.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="error::#index.xhtml" NAME="output1"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="error" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#gestionCmd#supprimerCmd.xhtml"
+  PATH="/gestionCmd/supprimerCmd.xhtml" SHAPE="304,641,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#gestionCmd#ajouterCmd.xhtml"
+  PATH="/gestionCmd/ajouterCmd.xhtml" SHAPE="304,273,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#gestionCmd#modifierCmd.xhtml"
+  PATH="/gestionCmd/modifierCmd.xhtml" SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#gestionCmd#consulterCmd.xhtml"
+  PATH="/gestionCmd/consulterCmd.xhtml" SHAPE="304,273,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#gestionArticle#gestionArticle.xhtml"
+  PATH="/gestionArticle/gestionArticle.xhtml" SHAPE="304,305,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

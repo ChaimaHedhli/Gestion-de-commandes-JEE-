@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+
+</h:head>
+
+<h:form id="helloForm">
+
+	<p:separator></p:separator>
+	<h2 style="text-align: center;">Consultation Des Contacts</h2>
+	<p:separator></p:separator>
+
+	<p:dataTable id="listeTable" var="varCt" value="#{ctB.listContact}"
+		widgetVar="cellCars"
+		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		paginator="true" rows="5" rowsPerPageTemplate="5,10,15">
+		<p:column headerText="Matricule">
+			<h:outputText value="#{varCt.numMatCnt}" />
+		</p:column>
+		<p:column headerText="Nom">
+			<h:outputText value="#{varCt.nomNomCnt}" />
+		</p:column>
+		<p:column headerText="Prenom">
+			<h:outputText value="#{varCt.nomPrnCnt}" />
+		</p:column>
+		<p:column headerText="GSM">
+			<h:outputText value="#{varCt.numGsmCnt}" />
+		</p:column>
+		<p:column headerText="Email">
+			<h:outputText value="#{varCt.adrEmailCnt}" />
+		</p:column>
+
+	</p:dataTable>
+
+	<h:panelGrid style="display:block; text-align:center" columns="3">
+		<p:commandButton value="Quitter" action="#{ctB.quitter}"
+			immediate="true" icon="ui-icon-circle-arrow-w"></p:commandButton>
+
+	</h:panelGrid>
+
+</h:form>
+
+</html>
+
